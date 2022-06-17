@@ -17,13 +17,24 @@
             </div>
         </div>
     </div>
-   
+<!--    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif
-   
+    @endif                               -->
+
+    @if($message = Session::get('success'))
+<div class="row">
+	<div class="col-12">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		  <strong>{{$message}}!</strong>
+
+		</div>
+	</div>
+</div>
+@endif
+
     <table class="table table-bordered">
         <tr>
             <th>S.No</th>

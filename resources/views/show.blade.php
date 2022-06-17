@@ -51,6 +51,16 @@
             <div>
                 Image: <img src="{{ Storage::url($user->profile_photo) }}" height="75" width="75" alt="" />
             </div>
+            <div class="form-group">
+                            <label> Gender </label>
+                            <select class="form-control" name="gender" disabled>
+                                @if($user->gender == "male")
+                                    <option value="male" selected> Male </option>
+                                @elseif($user->gender == "female")
+                                    <option value="female"> Female </option>
+                                @endif
+                            </select>
+                        </div>
         </div>
 
     </div>

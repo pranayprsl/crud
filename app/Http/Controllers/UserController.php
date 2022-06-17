@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Session;
 class UserController extends Controller
 {
    public function index()
@@ -42,7 +42,7 @@ class UserController extends Controller
         $data->profile_photo = $path;
         $data->save();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Account created successfully.');
 
    }
 
@@ -68,7 +68,7 @@ class UserController extends Controller
             'profile_photo' => '',
         ]);
 
-        dd($request->all());
+      
         $user = User::find($id);
 
         if($request->hasFile('profile_photo')){
@@ -81,9 +81,13 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->number = $request->number;
+        $user->DOB = $request->DOB;
+        $user->adhar = $request->adhar;
+        $user->gender = $request->gender;
         $user->save();
 
-        return redirect('/');
+        return redirect('/')->with('status','updated successfully');
    }
 
    public function destroy(User $user)
